@@ -69,5 +69,5 @@ theme: apollo
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/SharerMax/SharerMax.github.io.git
+  repo: git@github.com:SharerMax/saeratom.com.git
   branch: master
