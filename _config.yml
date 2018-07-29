@@ -71,4 +71,3 @@ deploy:
   type: git
   repo: https://github.com/SharerMax/saeratom.com.git
   branch: master
-  name: mdcw1103@gmail.com
