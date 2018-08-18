@@ -14,7 +14,7 @@ DOM元素中我们可以通过 [_DOM API_](https://developer.mozilla.org/en-US/d
 
 我们可以使用这两个特性来判断CSS属性的支持情况。如：
 
-``` JavaScript
+``` JS
 function cssSupport ({attr, value}) {
     let tempElement = document.createElement('div')
     if(attr in tempElement.style ) {
