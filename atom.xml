@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>西瓜的小站</title>
+  
+  <subtitle>Android小菜鸟一枚</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://saeratom.com/"/>
+  <updated>2018-08-28T07:19:24.052Z</updated>
+  <id>http://saeratom.com/</id>
+  
+  <author>
+    <name>Saeratom</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JS判断CSS属性可用性</title>
+    <link href="http://saeratom.com/2018/08/18/JS%E5%88%A4%E6%96%ADCSS%E5%B1%9E%E6%80%A7%E5%8F%AF%E7%94%A8%E6%80%A7/"/>
+    <id>http://saeratom.com/2018/08/18/JS判断CSS属性可用性/</id>
+    <published>2018-08-18T15:50:47.000Z</published>
+    <updated>2018-08-28T07:19:24.052Z</updated>
+    
+    <content type="html"><![CDATA[<p>Web开发中，因为浏览器的不同，CSS的属性支持情况是有不同的。有时候需要判断CSS属性的支持情况做出不一样的设计，或者需要polyfill这个不支持的属性，这时候就需要判断CSS的支持情况。</p><a id="more"></a><p>DOM元素中我们可以通过 <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style" target="_blank" rel="noopener"><em>DOM API</em></a> 获取样式声明对象 <a href="https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration" target="_blank" rel="noopener"><em>CSSStyleDeclaration</em></a>，获取的<a href="https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration" target="_blank" rel="noopener"><em>CSSStyleDeclaration</em></a>为内联style的css设置属性。<a href="https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration" target="_blank" rel="noopener"><em>CSSStyleDeclaration</em></a>有两个特点：</p><blockquote><ol><li>如果我们设置了一个不支持的CSS属性，则CSSStyleDeclaration中也不会出现这个变量名。</li><li>如果我们设置了一个支持的CSS属性，但是设置了一个不支持的值（如: sticky 定位），则CSSStyleDeclaration中对应的变量值还将保持为空值。</li></ol></blockquote><p>我们可以使用这两个特性来判断CSS属性的支持情况。如：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cssSupport</span> (<span class="params">&#123;attr, value&#125;</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> tempElement = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</span><br><span class="line">    <span class="keyword">if</span>(attr <span class="keyword">in</span> tempElement.style ) &#123;</span><br><span class="line">        tempElement.style[attr] = value</span><br><span class="line">        <span class="keyword">return</span> tempElement.style[attr] === value</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Web开发中，因为浏览器的不同，CSS的属性支持情况是有不同的。有时候需要判断CSS属性的支持情况做出不一样的设计，或者需要polyfill这个不支持的属性，这时候就需要判断CSS的支持情况。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Web" scheme="http://saeratom.com/tags/Web/"/>
+    
+      <category term="JavaScript" scheme="http://saeratom.com/tags/JavaScript/"/>
+    
+      <category term="CSS" scheme="http://saeratom.com/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Sticky Footer</title>
+    <link href="http://saeratom.com/2018/07/29/Sticky-Footer/"/>
+    <id>http://saeratom.com/2018/07/29/Sticky-Footer/</id>
+    <published>2018-07-29T14:54:34.000Z</published>
+    <updated>2018-08-28T07:18:03.863Z</updated>
+    
+    <content type="html"><![CDATA[<p>Sticky Footer 是一种网页效果：如果内容不够长时，页脚固定在浏览器底部；如果内容足够长，页脚固定在页面的最底部。</p><a id="more"></a><h2 id="1-使用absolute"><a href="#1-使用absolute" class="headerlink" title="1. 使用absolute"></a>1. 使用absolute</h2><p>HTML<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrapper"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"footer"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></p><p>CSS<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.wrapper</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">min-height</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.content</span> &#123;</span><br><span class="line">    <span class="attribute">padding-bottom</span>: <span class="number">50px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.footer</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h2 id="2-使用margin-bottom-负值"><a href="#2-使用margin-bottom-负值" class="headerlink" title="2. 使用margin-bottom 负值"></a>2. 使用margin-bottom 负值</h2><p>HTML<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrapper"</span>&gt;</span></span><br><span class="line">        content</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"push"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">footer</span> <span class="attr">class</span>=<span class="string">"footer"</span>&gt;</span><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></p><p>CSS<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span>, <span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.wrapper</span> &#123;</span><br><span class="line">    <span class="attribute">min-height</span>: <span class="number">100%</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Equal to height of footer */</span></span><br><span class="line">    <span class="comment">/* But also accounting for potential margin-bottom of last child */</span></span><br><span class="line">    <span class="attribute">margin-bottom</span>: -<span class="number">50px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.footer</span>,</span><br><span class="line"><span class="selector-class">.push</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h2 id="3-使用calc"><a href="#3-使用calc" class="headerlink" title="3. 使用calc()"></a>3. 使用calc()</h2><p>HTML<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">        content</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">footer</span> <span class="attr">class</span>=<span class="string">"footer"</span>&gt;</span><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></p><p>CSS<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.content</span> &#123;</span><br><span class="line">    <span class="attribute">min-height</span>: <span class="built_in">calc</span>(100vh - 50px);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.footer</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><div class="tip"><br>假如content中的最后一个元素有 <em>margin-bottom</em> 属性，这将导致 <em>content</em> 的高增加，这是需要调整<em>calc(100vh - footerHeight - marginBottom)</em><br></div><h2 id="4-使用-flex-布局"><a href="#4-使用-flex-布局" class="headerlink" title="4. 使用 flex 布局"></a>4. 使用 flex 布局</h2><p>HTML<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">        content</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">footer</span> <span class="attr">class</span>=<span class="string">"footer"</span>&gt;</span><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></p><p>CSS<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span>, <span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">flex-direction</span>: column;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.content</span> &#123;</span><br><span class="line">    <span class="attribute">flex</span>: <span class="number">1</span> <span class="number">0</span> auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.footer</span> &#123;</span><br><span class="line">    <span class="attribute">flex-shrink</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Sticky Footer 是一种网页效果：如果内容不够长时，页脚固定在浏览器底部；如果内容足够长，页脚固定在页面的最底部。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Web" scheme="http://saeratom.com/tags/Web/"/>
+    
+      <category term="Footer" scheme="http://saeratom.com/tags/Footer/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2017年计划</title>
+    <link href="http://saeratom.com/2017/01/02/2017-plan/"/>
+    <id>http://saeratom.com/2017/01/02/2017-plan/</id>
+    <published>2017-01-02T14:30:09.000Z</published>
+    <updated>2018-08-28T07:19:24.052Z</updated>
+    
+    <content type="html"><![CDATA[<p>2016已经过去。 </p><p>突然发现我已在舒适区过的越来越自在，回想这一年似乎发现什么都没有发生改变。</p><p>技术能力在原地踏步，妹子依然没有。我觉得有必要让自己离开舒适区，让自己提升一下。</p><p>先定一个小目标，2017会越来越好。</p><a id="more"></a><h1 id="书单"><a href="#书单" class="headerlink" title="书单"></a>书单</h1><h2 id="技术类"><a href="#技术类" class="headerlink" title="技术类"></a>技术类</h2><blockquote><ol><li>Effective Java</li><li>代码整洁之道</li><li>重构：改善既有代码的设计</li><li>Android源码设计模式解析与实战</li><li>深入理解计算机系统</li><li>图解TCP/IP</li></ol></blockquote><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><blockquote><ol><li>失控</li><li>科技想要什么</li><li>必然</li><li>1984</li><li>经济学通史</li><li>赌客信条——你不可不知的行为经济学</li><li>硅谷百年史——伟大的科技创新与创业历程</li></ol></blockquote><h1 id="其它目标"><a href="#其它目标" class="headerlink" title="其它目标"></a>其它目标</h1><blockquote><ol><li>每月2篇blog</li><li>去没去过的城市（上海，南京）</li><li>坐一次飞机</li><li>实现一个网络协议（<em>gfw.press</em> android）</li><li>看完一本全英文书（<em>50 Android Hacks</em> or <em>Python Cookbook</em>）</li><li>造两个轮子并维护（BannerLayout, ImageShare）</li><li>写一个Web页面(Introduce <em>Bannnerlayout</em> &amp; <em>ImageShare</em>)</li></ol></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;2016已经过去。 &lt;/p&gt;
+&lt;p&gt;突然发现我已在舒适区过的越来越自在，回想这一年似乎发现什么都没有发生改变。&lt;/p&gt;
+&lt;p&gt;技术能力在原地踏步，妹子依然没有。我觉得有必要让自己离开舒适区，让自己提升一下。&lt;/p&gt;
+&lt;p&gt;先定一个小目标，2017会越来越好。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="plan" scheme="http://saeratom.com/tags/plan/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://saeratom.com/2016/10/31/hello-world/"/>
+    <id>http://saeratom.com/2016/10/31/hello-world/</id>
+    <published>2016-10-31T07:59:44.000Z</published>
+    <updated>2016-11-01T05:39:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Hello World!</p><p>感谢<a href="https://github.com" target="_blank" rel="noopener">Github</a>，<a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>，<a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank" rel="noopener">pinggod</a></p><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Hello World!&lt;/p&gt;
+&lt;p&gt;感谢&lt;a href=&quot;https://github.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Github&lt;/a&gt;，&lt;a href=&quot;https://hexo.io&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;，&lt;a href=&quot;https://github.com/pinggod/hexo-theme-apollo&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;pinggod&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="blog" scheme="http://saeratom.com/tags/blog/"/>
+    
+  </entry>
+  
+</feed>
