@@ -1,7 +1,7 @@
 ---
 title: JS判断CSS属性可用性
 date: 2018-08-18 23:50:47
-tags: Web,JavaScript,CSS
+tags: [Web, JavaScript, CSS]
 ---
 
 Web开发中，因为浏览器的不同，CSS的属性支持情况是有不同的。有时候需要判断CSS属性的支持情况做出不一样的设计，或者需要polyfill这个不支持的属性，这时候就需要判断CSS的支持情况。

@@ -1,7 +1,7 @@
 ---
 title: Sticky Footer
 date: 2018-07-29 22:54:34
-tags: Web,Footer
+tags: [Web, Footer]
 ---
 
 Sticky Footer 是一种网页效果：如果内容不够长时，页脚固定在浏览器底部；如果内容足够长，页脚固定在页面的最底部。

@@ -1,6 +1,7 @@
 menu:
     Blog: /
     Archive: /archives/
+    #Tags: /tags 
     Twitter: https://twitter.com/Saeratom
     GitHub: https://github.com/SharerMax
     Rss: /atom.xml

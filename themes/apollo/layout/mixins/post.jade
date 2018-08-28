@@ -3,7 +3,17 @@ mixin postInfo(item)
         != full_date(item.date, 'll')
         if item.from && (is_home() || is_post())
             a.post-from(href=item.from target="_blank" title=item.from) 翻译 · 原文地址
+        if item.tags && item.tags.length > 0
+            .post-tags
+                - item.tags.each(function (tag) {
+                span.post-tag= tag.name
+                - })
+                
+            //- a.post-tag= Object.keys(item.tags.data)
+            //- a.post-tag= item.tags
+            //- a.post-tag= item.tags.data
 
+            
 //- Index Page
 mixin posts()
     ul.home.post-list
