@@ -15,7 +15,7 @@ disqus:
 duoshuo:
 
 # Analytics
-# google-analytics:
+google-analytics:
 ga: UA-122964612-1
 
 # Copyright Infomation
