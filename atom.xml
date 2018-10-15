@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://saeratom.com/"/>
-  <updated>2018-08-28T07:19:24.052Z</updated>
+  <updated>2018-10-15T09:36:19.708Z</updated>
   <id>http://saeratom.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android面试</title>
+    <link href="http://saeratom.com/2018/09/17/Android%E9%9D%A2%E8%AF%95/"/>
+    <id>http://saeratom.com/2018/09/17/Android面试/</id>
+    <published>2018-09-17T07:03:41.000Z</published>
+    <updated>2018-10-15T09:36:19.708Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-HashMap-与-HashTable-的区别"><a href="#1-HashMap-与-HashTable-的区别" class="headerlink" title="1. HashMap 与 HashTable 的区别"></a>1. HashMap 与 HashTable 的区别</h2><p>HashMap 和 HashTable 都实现了Map接口，</p><h4 id="线程安全性"><a href="#线程安全性" class="headerlink" title="线程安全性"></a>线程安全性</h4><p>HashMap是线程不安全的，并且可以接受 <em>null</em> 做为键值或 value 值, HashTable是线程安全的，但是不能接受 <em>null</em> 值</p><h4 id="速度"><a href="#速度" class="headerlink" title="速度"></a>速度</h4><p>HashMap因为非 synchronized，所以在单线程模式下性能会优于HashTable</p><h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><p>HashMap使用的迭代器 fail-fast 迭代器 <em>Iterator</em>，而 HashTable 使用的是非 fail-fast 的迭代器 <em>Enumerator</em> </p><blockquote><ol><li><a href="http://www.importnew.com/7010.html" target="_blank" rel="noopener">HashMap 和 Hashtable 的区别</a></li><li><a href="http://zhaox.github.io/2016/07/05/hashmap-vs-hashtable" target="_blank" rel="noopener">HashMap 和 HashTable 到底哪不同？</a></li></ol></blockquote><h2 id="2-RecycleView-局部刷新"><a href="#2-RecycleView-局部刷新" class="headerlink" title="2. RecycleView 局部刷新"></a>2. RecycleView 局部刷新</h2><p>如果有可能尽量不直接调用 <a href="https://developer.android.com/reference/android/support/v7/widget/RecyclerView.Adapter#notifydatasetchanged" target="_blank" rel="noopener">notifyDataSetChanged</a>，尽可能使用和数据变化对应的方法来通知 Adapter 数据发生了变化。如：</p><blockquote><ol><li><a href="https://developer.android.com/reference/android/support/v7/widget/RecyclerView.Adapter.html#notifyItemChanged(int)" target="_blank" rel="noopener">notifyItemChanged(int)</a></li><li><a href="https://developer.android.com/reference/android/support/v7/widget/RecyclerView.Adapter.html#notifyItemInserted(int)" target="_blank" rel="noopener">notifyItemInserted(int)</a></li><li><a href="https://developer.android.com/reference/android/support/v7/widget/RecyclerView.Adapter.html#notifyItemRemoved(int)" target="_blank" rel="noopener">notifyItemRemoved(int)</a></li><li><a href="https://developer.android.com/reference/android/support/v7/widget/RecyclerView.Adapter.html#notifyItemRangeChanged(int,%20int)" target="_blank" rel="noopener">notifyItemRangeChanged(int, int)</a></li><li><a href="https://developer.android.com/reference/android/support/v7/widget/RecyclerView.Adapter.html#notifyItemRangeInserted(int,%20int)" target="_blank" rel="noopener">notifyItemRangeInserted(int, int)</a></li><li><a href="https://developer.android.com/reference/android/support/v7/widget/RecyclerView.Adapter.html#notifyItemRangeRemoved(int,%20int)" target="_blank" rel="noopener">notifyItemRangeRemoved(int, int)</a></li></ol></blockquote><h2 id="3-Object-的-wait-方法"><a href="#3-Object-的-wait-方法" class="headerlink" title="3. Object 的 wait() 方法"></a>3. Object 的 wait() 方法</h2><p><em>wait()</em> 方法需要写在同步块（<em>synchronized</em>）中，并与<em>notify()</em> 或 <em>notifyAll()</em> 搭配使用。</p><p><em>wait()</em>、 <em>notify()</em> 和 <em>notifyAll()</em> 都是object的方法，当一个对象调用 <em>wait()</em> 当前线程会进入WAITING状态进入等待池并释放当前持有的锁。当对象的 <em>notify()</em> 或 <em>notifyAll</em> 方法被调用，等待状态的线程会进入锁池重新争取锁，一旦获得锁，便进入可RUNNABLE状态，等待执行。</p><h4 id="notify-和-notifyAll-的区别"><a href="#notify-和-notifyAll-的区别" class="headerlink" title="notify() 和 notifyAll()的区别"></a>notify() 和 notifyAll()的区别</h4><p>首先要明确一点，等待池中的线程是不参与锁的竞争的，也就无法直接执行；锁池中的线程要先或的锁才能进入RUNNABLE状态，随之执行</p><p><em>notify()</em> 随机唤醒等待池中的一个线程进入锁池<br><em>notifyAll()</em> 唤醒等待池中的所有线程进入锁池</p><blockquote><p><a href="https://www.zhihu.com/question/37601861/answer/145545371" target="_blank" rel="noopener">java中的notify和notifyAll有什么区别</a></p></blockquote><h2 id="4-动态代理"><a href="#4-动态代理" class="headerlink" title="4. 动态代理"></a>4. 动态代理</h2><p>代理模式的定义：代理模式给某一个对象提供一个代理对象，并由代理对象控制对原对象的引用。</p><p>代理模式的一种实现，与静态代理相比更适合大量需要代理处理的场景，可实现所谓的AOP思想的编程方式</p><h4 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h4><ol><li>被代理对象必须为接口，或接口的实现类</li><li>代理对象必须实现InvocationHandler接口</li><li>Proxy.newProxyInstance(ClassLoader loader, Class&lt;?&gt;[] interfaces, InvocationHandler h)生成代理对象</li><li>使用生成的代理对象替换被代理对象</li></ol><p><a href="https://www.zhihu.com/question/264948554/answer/287647598" target="_blank" rel="noopener">动态代理为什么传接口，内部实现接口，而不直接传类，直接继承类?</a></p><div class="tip"><br>依一个接口的输入与数据的参数规则去动态的对这个接口进行实现，这种形式是 java 动态代理最常用的一种场景。所以第二个参数实际是对于这个实现的规则的表述，就是一个接口。<br></div>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;1-HashMap-与-HashTable-的区别&quot;&gt;&lt;a href=&quot;#1-HashMap-与-HashTable-的区别&quot; class=&quot;headerlink&quot; title=&quot;1. HashMap 与 HashTable 的区别&quot;&gt;&lt;/a&gt;1. HashMap
+      
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="http://saeratom.com/tags/Android/"/>
+    
+      <category term="面试" scheme="http://saeratom.com/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>JS判断CSS属性可用性</title>
