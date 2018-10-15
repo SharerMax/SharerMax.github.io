@@ -20,6 +20,8 @@ HashMap使用的迭代器 fail-fast 迭代器 *Iterator*，而 HashTable 使用�
 > 1. [HashMap 和 Hashtable 的区别][1]
 > 2. [HashMap 和 HashTable 到底哪不同？][2]
 
+<!--more-->
+
 ## 2. RecycleView 局部刷新
 如果有可能尽量不直接调用 [notifyDataSetChanged][3]，尽可能使用和数据变化对应的方法来通知 Adapter 数据发生了变化。如：
 > 1. [notifyItemChanged(int)]
