@@ -17,7 +17,7 @@ static int demo() {
         return i - 2; // #2
     } finally {
         System.out.println("finally block");  
-        return i-3; // #3
+        return i - 3; // #3
     }
 }
 ```
